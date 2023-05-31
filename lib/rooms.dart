@@ -25,20 +25,17 @@ class RoomTile extends StatelessWidget {
   final avatar = CircleAvatar(
       backgroundImage: NetworkImage(
           'https://t3.ftcdn.net/jpg/02/00/90/24/360_F_200902415_G4eZ9Ok3Ypd4SZZKjc8nqJyFVp1eOD6V.jpg'));
+
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
-            leading: avatar,
-            title: responsive.isOnlyUserImageMode(context)
-                ? SizedBox.shrink()
-                : Text('Simple Room',
-                maxLines: 1, overflow: TextOverflow.ellipsis),
-            subtitle: responsive.isOnlyUserImageMode(context)
-                ? SizedBox.shrink()
-                :Text('Simple message',
-                maxLines: 1, overflow: TextOverflow.ellipsis),
-            onTap: () => navigation.chatKey.currentState!
-                .pushReplacementNamed(Chat.route, arguments: room),
-          );
+      leading: avatar,
+      title: Text('Simple Room', maxLines: 1, overflow: TextOverflow.ellipsis),
+      subtitle:
+          Text('Simple message', maxLines: 1, overflow: TextOverflow.ellipsis),
+      onTap: () => navigation.chatKey.currentState!
+          .pushReplacementNamed(Chat.route, arguments: room),
+    );
   }
 }

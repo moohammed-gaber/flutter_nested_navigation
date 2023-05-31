@@ -16,8 +16,8 @@ class IdleChat extends StatelessWidget {
     return Container(
       child: Center(
           child: Text(
-            'IDLE',
-          )),
+        'IDLE',
+      )),
     );
   }
 }
@@ -42,4 +42,3 @@ class Chat extends StatelessWidget {
     );
   }
 }
-

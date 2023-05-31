@@ -47,7 +47,7 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                 Expanded(
                   child: Rooms(),
                 ),
-                VerticalDivider(),
+                VerticalDivider(width: 0),
                 Expanded(
                   flex: 3,
                   child: Stack(
@@ -65,6 +65,8 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                     ],
                   ),
                 ),
+                VerticalDivider(width: 0),
+
                 Visibility(
                   child: EndBar(),
                   visible: responsive.isThreeBarsMode(context),

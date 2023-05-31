@@ -10,6 +10,15 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: ListTile(
+        leading: Icon(Icons.attachment, size: 20),
+        title: Text(
+          'Media',
+        ),
+        onTap: () {
+          navigation.endBarKey.currentState!.pushNamed(Media.route);
+        },
+      ),
       appBar: AppBar(
           title: Text('Contact Info'),
           leading: IconButton(
@@ -49,5 +58,17 @@ class EndBar extends StatelessWidget {
             ),
             color: Colors.green,
             duration: Duration(milliseconds: 200)));
+  }
+}
+
+class Media extends StatelessWidget {
+  const Media({Key? key}) : super(key: key);
+  static const route = '/media';
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Media')),
+    );
   }
 }

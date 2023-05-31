@@ -56,6 +56,9 @@ class Navigation {
         return navigation.createAnimatedRoute(Profile());
       case IdleEndBar.route:
         return navigation.createAnimatedRoute(IdleEndBar());
+      case Media.route:
+        return navigation.createAnimatedRoute(Media());
+
       default:
     }
   }
