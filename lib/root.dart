@@ -1,10 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nested_navigation/chat.dart';
 import 'package:nested_navigation/end_bar.dart';
 import 'package:nested_navigation/injection.dart';
 import 'package:nested_navigation/responsive.dart';
 import 'package:nested_navigation/rooms.dart';
-import 'package:universal_html/html.dart'as html;
+import 'package:universal_html/html.dart' as html;
 
 class NestedNavigationPage extends StatefulWidget {
   NestedNavigationPage({Key? key}) : super(key: key);
@@ -19,6 +20,7 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
     final userAgent = html.window.navigator.userAgent.toString().toLowerCase();
 
     print(userAgent);
+    print(defaultTargetPlatform);
     return ValueListenableBuilder(
       valueListenable: controller,
       builder: (context, value, child) => Scaffold(
