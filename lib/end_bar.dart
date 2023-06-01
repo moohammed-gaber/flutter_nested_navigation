@@ -53,7 +53,7 @@ class EndBar extends StatelessWidget {
             width: value.isExpanded ? width(context) : 0,
             child: Navigator(
               key: navigation.endBarKey,
-              onGenerateRoute: navigation.onGenerateEndBarRoute,
+              // onGenerateRoute: navigation.onGenerateEndBarRoute,
               initialRoute: Profile.route,
             ),
             color: Colors.green,
