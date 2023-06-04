@@ -23,33 +23,3 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-
-/*
-          child: Column(children: [
-            Row(children: [
-              IconButton(
-                  onPressed: controller.toggleExpand,
-                  icon: Icon(Icons.cancel))
-            ]),
-          ]),
-*/
-
-/*
-                Align(
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: AnimatedContainer(
-                      width: value.isExpanded ? 700 : 0,
-                      child: Column(children: [
-                        Row(children: [
-                          IconButton(
-                              onPressed: controller.toggleExpand,
-                              icon: Icon(Icons.cancel))
-                        ]),
-                      ]),
-                      color: Colors.green,
-                      duration: Duration(milliseconds: 700)),
-                ),
-*/
-
-
