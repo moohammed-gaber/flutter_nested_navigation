@@ -5,7 +5,6 @@ import 'package:nested_navigation/end_bar.dart';
 import 'package:nested_navigation/injection.dart';
 import 'package:nested_navigation/responsive.dart';
 import 'package:nested_navigation/rooms.dart';
-import 'package:universal_html/html.dart' as html;
 
 class NestedNavigationPage extends StatefulWidget {
   const NestedNavigationPage({Key? key}) : super(key: key);
@@ -15,14 +14,10 @@ class NestedNavigationPage extends StatefulWidget {
 }
 
 class _NestedNavigationPageState extends State<NestedNavigationPage> {
-  double width(BuildContext context) => 500;
+  double width(BuildContext context) => context.width / 3;
 
   @override
   Widget build(BuildContext context) {
-    final userAgent = html.window.navigator.userAgent.toString().toLowerCase();
-
-    print(userAgent);
-    print(defaultTargetPlatform);
     return ValueListenableBuilder(
       valueListenable: controller,
       builder: (context, value, child) => Scaffold(
@@ -52,7 +47,7 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                       const VerticalDivider(width: 0),
                       AnimatedContainer(
                           duration: const Duration(milliseconds: 200),
-                          width: value.isExpanded ? context.width / 3 : 0,
+                          width: value.isExpanded ? width(context) : 0,
                           child: const ChatSetting())
                     ]),
                   ),

@@ -27,7 +27,6 @@ class WideModeChatNavigation extends Navigation implements IChatNavigation {
 
   @override
   Future<T?> toChat<T extends Object?>() {
-    print('heloooooo');
     return key.currentState!
         .pushNamed(Chat.route, arguments: RoomEntity(name: 'Helelo'));
   }

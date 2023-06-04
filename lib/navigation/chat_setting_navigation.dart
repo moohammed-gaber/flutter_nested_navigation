@@ -15,7 +15,6 @@ abstract class IChatSettingNavigation {
 class WideModeChatSettingNavigation extends Navigation
     implements IChatSettingNavigation {
   final key = GlobalKey<NavigatorState>();
-
   @override
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -48,7 +47,8 @@ class WideModeChatSettingNavigation extends Navigation
   }
 
   @override
-  Widget get popButton => IconButton(onPressed: pop, icon: const Icon(Icons.cancel));
+  Widget get popButton =>
+      IconButton(onPressed: pop, icon: const Icon(Icons.cancel));
 }
 
 class NormaModeChatSettingNavigation implements IChatSettingNavigation {
