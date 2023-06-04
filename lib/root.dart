@@ -49,70 +49,11 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                           initialRoute: IdleChat.route,
                         ),
                       ),
-/*
-                      Visibility(
-                          // maintainState: true,
-                          visible: context.width < 900 && value.isExpanded,
-                          replacement:
-                          child: SizedBox()),
-*/
-
-/*
-                      Expanded(
-                        flex: 3,
-                        child: Stack(
-                          fit: StackFit.expand,
-                          alignment: AlignmentDirectional.centerEnd,
-                          children: [
-                            Navigator(
-                              key: wideModeChatNavigation.key,
-                              onGenerateRoute:
-                                  wideModeChatNavigation.onGenerateRoute,
-                              initialRoute: IdleChat.route,
-                            ),
-*/
-/*
-                            Container(
-                              color: Colors.green,
-                              child: ChatSetting(),
-                            ),
-                                                        Container(
-                                color: Colors.red.withOpacity(0.5),
-                                width: 500,
-                                child: ChatSetting()),
-
-*/ /*
-
-*/
-/*
-                            Visibility(
-                              // visible: !responsive.isThreeBarsMode(context),
-                              // visible: !responsive.isThreeBarsMode(context),
-                              child: AnimatedContainer(
-                                  duration: Duration(milliseconds: 200),
-                                  width: value.isExpanded ? width(context) : 0,
-                                  child: ChatSetting()),
-                            )
-*/ /*
-
-                          ],
-                        ),
-                      ),
-*/
                       VerticalDivider(width: 0),
                       AnimatedContainer(
                           duration: Duration(milliseconds: 200),
                           width: value.isExpanded ? context.width / 3 : 0,
                           child: ChatSetting())
-
-/*
-                      Visibility(
-                        child: ChatSetting(),
-                        visible: responsive.isThreeBarsMode(context),
-                      )
-*/
-
-                      // ChatSetting()
                     ]),
                   ),
                 ],
