@@ -8,7 +8,7 @@ import 'package:nested_navigation/rooms.dart';
 import 'package:universal_html/html.dart' as html;
 
 class NestedNavigationPage extends StatefulWidget {
-  NestedNavigationPage({Key? key}) : super(key: key);
+  const NestedNavigationPage({Key? key}) : super(key: key);
 
   @override
   State<NestedNavigationPage> createState() => _NestedNavigationPageState();
@@ -31,15 +31,15 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                 children: [
                   Text(
                     'Height ${context.height} - Width ${context.width}',
-                    style: TextStyle(fontSize: 20),
+                    style: const TextStyle(fontSize: 20),
                   ),
                   Expanded(
                     child: Row(children: [
                       SizedBox(
-                        child: Rooms(),
                         width: context.width * 0.2,
+                        child: Rooms(),
                       ),
-                      VerticalDivider(width: 0),
+                      const VerticalDivider(width: 0),
                       Expanded(
                         flex: 3,
                         child: Navigator(
@@ -49,11 +49,11 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                           initialRoute: IdleChat.route,
                         ),
                       ),
-                      VerticalDivider(width: 0),
+                      const VerticalDivider(width: 0),
                       AnimatedContainer(
-                          duration: Duration(milliseconds: 200),
+                          duration: const Duration(milliseconds: 200),
                           width: value.isExpanded ? context.width / 3 : 0,
-                          child: ChatSetting())
+                          child: const ChatSetting())
                     ]),
                   ),
                 ],

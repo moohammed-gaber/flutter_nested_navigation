@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nested_navigation/navigation.dart';
-import 'dart:math' as math;
 
-import 'package:flutter/material.dart';
-import 'package:nested_navigation/chat.dart';
-import 'package:nested_navigation/controller.dart';
 import 'package:nested_navigation/end_bar.dart';
-import 'package:nested_navigation/entities.dart';
 import 'package:nested_navigation/injection.dart';
-import 'package:nested_navigation/main.dart';
 import 'package:nested_navigation/responsive.dart';
 
 abstract class IChatSettingNavigation {
@@ -26,11 +20,11 @@ class WideModeChatSettingNavigation extends Navigation
   Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Profile.route:
-        return createAnimatedRoute(Profile());
+        return createAnimatedRoute(const Profile());
       case IdleChatSetting.route:
-        return createAnimatedRoute(IdleChatSetting());
+        return createAnimatedRoute(const IdleChatSetting());
       case Media.route:
-        return createAnimatedRoute(Media());
+        return createAnimatedRoute(const Media());
 
       default:
     }
@@ -54,22 +48,22 @@ class WideModeChatSettingNavigation extends Navigation
   }
 
   @override
-  Widget get popButton => IconButton(onPressed: pop, icon: Icon(Icons.cancel));
+  Widget get popButton => IconButton(onPressed: pop, icon: const Icon(Icons.cancel));
 }
 
 class NormaModeChatSettingNavigation implements IChatSettingNavigation {
   @override
   Future<T?> toMedia<T extends Object?>() {
-    return materialNavigationKey.currentState!.context.to(Media());
+    return materialNavigationKey.currentState!.context.to(const Media());
   }
 
   @override
   Widget get popButton =>
-      IconButton(onPressed: pop, icon: Icon(Icons.arrow_back_ios_new));
+      IconButton(onPressed: pop, icon: const Icon(Icons.arrow_back_ios_new));
 
   @override
   Future<T?> toProfile<T extends Object?>() {
-    return materialNavigationKey.currentState!.context.to(Profile());
+    return materialNavigationKey.currentState!.context.to(const Profile());
   }
 
   @override

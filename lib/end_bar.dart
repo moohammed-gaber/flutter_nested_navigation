@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nested_navigation/injection.dart';
-import 'package:nested_navigation/main.dart';
 
 class Profile extends StatelessWidget {
   static const route = '/profile';
@@ -12,13 +11,13 @@ class Profile extends StatelessWidget {
     return Scaffold(
       body: ListTile(
         // leading: Icon(Icons.attachment, size: 20),
-        title: Text(
+        title: const Text(
           'Media',
         ),
         onTap: navigationFactory.chatSettingNavigation.toMedia,
       ),
       appBar: AppBar(
-          title: Text('Contact Info'),
+          title: const Text('Contact Info'),
           leading: navigationFactory.chatSettingNavigation.popButton),
     );
   }
@@ -31,7 +30,7 @@ class IdleChatSetting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       width: 0,
       height: 0,
     );
@@ -53,13 +52,13 @@ class ChatSetting extends StatelessWidget {
         valueListenable: controller,
         builder: (context, value, child) => AnimatedContainer(
             width: value.isExpanded ? width(context) : 0,
+            color: Colors.green,
+            duration: const Duration(milliseconds: 200),
             child: Navigator(
               key: wideModeChatSettingNavigation.key,
               onGenerateRoute: wideModeChatSettingNavigation.onGenerateRoute,
               initialRoute: Profile.route,
-            ),
-            color: Colors.green,
-            duration: Duration(milliseconds: 200)));
+            )));
   }
 }
 
@@ -70,7 +69,7 @@ class Media extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Media')),
+      appBar: AppBar(title: const Text('Media')),
     );
   }
 }

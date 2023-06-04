@@ -1,8 +1,6 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:nested_navigation/controller.dart';
-import 'package:nested_navigation/end_bar.dart';
 import 'package:nested_navigation/entities.dart';
 import 'package:nested_navigation/injection.dart';
 
@@ -14,7 +12,7 @@ class IdleChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Center(
+      child: const Center(
           child: Text(
         'IDLE',
       )),
@@ -39,7 +37,7 @@ class Chat extends StatelessWidget {
                 navigationFactory.chatSettingNavigation.toProfile();
               },
               /*onTap: controller.toggleExpand,*/ child:
-                  Text('Mohamed Gaber'))),
+                  const Text('Mohamed Gaber'))),
       backgroundColor: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
           .withOpacity(1.0),
       body: Center(child: Text(room.name)),

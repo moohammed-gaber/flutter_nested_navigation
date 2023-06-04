@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:nested_navigation/chat.dart';
 import 'package:nested_navigation/entities.dart';
 import 'package:nested_navigation/injection.dart';
 
@@ -20,9 +19,9 @@ class Rooms extends StatelessWidget {
 }
 
 class RoomTile extends StatelessWidget {
-  RoomTile({Key? key, required this.room}) : super(key: key);
+  const RoomTile({Key? key, required this.room}) : super(key: key);
   final RoomEntity room;
-  final avatar = CircleAvatar(
+  final avatar = const CircleAvatar(
       backgroundImage: NetworkImage(
           'https://t3.ftcdn.net/jpg/02/00/90/24/360_F_200902415_G4eZ9Ok3Ypd4SZZKjc8nqJyFVp1eOD6V.jpg'));
 
@@ -30,9 +29,9 @@ class RoomTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: avatar,
-      title: Text('Simple Room', maxLines: 1, overflow: TextOverflow.ellipsis),
+      title: const Text('Simple Room', maxLines: 1, overflow: TextOverflow.ellipsis),
       subtitle:
-          Text('Simple message', maxLines: 1, overflow: TextOverflow.ellipsis),
+          const Text('Simple message', maxLines: 1, overflow: TextOverflow.ellipsis),
       onTap: () => navigationFactory.chatNavigation.toChat(),
     );
   }

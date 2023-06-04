@@ -6,7 +6,7 @@ class AppState {
   const AppState({
     required this.isExpanded,
   });
-  factory AppState.initial() => AppState(isExpanded: false);
+  factory AppState.initial() => const AppState(isExpanded: false);
 
   AppState copyWith({
     bool? isExpanded,
