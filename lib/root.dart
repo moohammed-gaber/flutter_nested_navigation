@@ -37,8 +37,25 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                     child: Row(children: [
                       Expanded(
                         child: Rooms(),
+                        // width: 300,
                       ),
                       VerticalDivider(width: 0),
+
+                      Visibility(
+                          // maintainState: true,
+                          visible: context.width < 900 && value.isExpanded,
+                          replacement: Expanded(
+                            flex: 3,
+                            child: Navigator(
+                              key: wideModeChatNavigation.key,
+                              onGenerateRoute:
+                                  wideModeChatNavigation.onGenerateRoute,
+                              initialRoute: IdleChat.route,
+                            ),
+                          ),
+                          child: SizedBox()),
+
+/*
                       Expanded(
                         flex: 3,
                         child: Stack(
@@ -51,6 +68,7 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                                   wideModeChatNavigation.onGenerateRoute,
                               initialRoute: IdleChat.route,
                             ),
+*/
 /*
                             Container(
                               color: Colors.green,
@@ -60,6 +78,8 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                                 color: Colors.red.withOpacity(0.5),
                                 width: 500,
                                 child: ChatSetting()),
+
+*/ /*
 
 */
 /*
@@ -71,10 +91,12 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                                   width: value.isExpanded ? width(context) : 0,
                                   child: ChatSetting()),
                             )
-*/
+*/ /*
+
                           ],
                         ),
                       ),
+*/
                       VerticalDivider(width: 0),
                       AnimatedContainer(
                           duration: Duration(milliseconds: 200),
