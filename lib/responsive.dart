@@ -6,7 +6,7 @@ class Responsive {
       defaultTargetPlatform == TargetPlatform.iOS ||
       defaultTargetPlatform == TargetPlatform.android;
 
-  bool get isWebMode => kIsWeb && !isMobile;
+  bool get isWideMode => kIsWeb && !isMobile;
 }
 
 extension BuildContextExtenstions on BuildContext {
