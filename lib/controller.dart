@@ -23,4 +23,12 @@ class AppController extends ValueNotifier<AppState> {
   void toggleExpand() {
     value = value.copyWith(isExpanded: !value.isExpanded);
   }
+
+  void collapse() {
+    value = value.copyWith(isExpanded: false);
+  }
+
+  void expand() {
+    value = value.copyWith(isExpanded: true);
+  }
 }

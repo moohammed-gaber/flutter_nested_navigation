@@ -9,8 +9,8 @@ final normalModeChatNavigation = NormalModeChatNavigation();
 final normaModeChatSettingNavigation = NormaModeChatSettingNavigation();
 final wideModeChatNavigation = WideModeChatNavigation();
 final wideModeChatSettingNavigation = WideModeChatSettingNavigation();
-final wideModeNavigationFactory = WideModeNavigationFactory();
-final normalModeNavigationFactory = NormalModeNavigationFactory();
+final wideModeNavigationFactory = WideModeNavigationAbstractFactory();
+final normalModeNavigationFactory = NormalModeNavigationAbstractFactory();
 final navigationFactoryProducer = NavigationFactoryProducer(responsive);
 final navigationFactory = navigationFactoryProducer.getFactory();
 

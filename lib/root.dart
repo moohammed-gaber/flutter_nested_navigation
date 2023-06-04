@@ -15,6 +15,8 @@ class NestedNavigationPage extends StatefulWidget {
 }
 
 class _NestedNavigationPageState extends State<NestedNavigationPage> {
+  double width(BuildContext context) => 500;
+
   @override
   Widget build(BuildContext context) {
     final userAgent = html.window.navigator.userAgent.toString().toLowerCase();
@@ -37,33 +39,47 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                         child: Rooms(),
                       ),
                       VerticalDivider(width: 0),
-                      Visibility(
-                        visible: false,
-                        child: Expanded(
-                          flex: 3,
-                          child: Stack(
-                            fit: StackFit.expand,
-                            alignment: AlignmentDirectional.centerEnd,
-                            children: [
-                              Navigator(
-                                key: wideModeChatNavigation.key,
-                                onGenerateRoute:
-                                    wideModeChatNavigation.onGenerateRoute,
-                                initialRoute: IdleChat.route,
-                              ),
-                              /*
-                              Visibility(
-                                child: ChatSetting(),
-                                visible: !responsive.isThreeBarsMode(context),
-                              )
+                      Expanded(
+                        flex: 3,
+                        child: Stack(
+                          fit: StackFit.expand,
+                          alignment: AlignmentDirectional.centerEnd,
+                          children: [
+                            Navigator(
+                              key: wideModeChatNavigation.key,
+                              onGenerateRoute:
+                                  wideModeChatNavigation.onGenerateRoute,
+                              initialRoute: IdleChat.route,
+                            ),
+/*
+                            Container(
+                              color: Colors.green,
+                              child: ChatSetting(),
+                            ),
+                                                        Container(
+                                color: Colors.red.withOpacity(0.5),
+                                width: 500,
+                                child: ChatSetting()),
 
-                               */
-                            ],
-                          ),
+*/
+/*
+                            Visibility(
+                              // visible: !responsive.isThreeBarsMode(context),
+                              // visible: !responsive.isThreeBarsMode(context),
+                              child: AnimatedContainer(
+                                  duration: Duration(milliseconds: 200),
+                                  width: value.isExpanded ? width(context) : 0,
+                                  child: ChatSetting()),
+                            )
+*/
+                          ],
                         ),
                       ),
                       VerticalDivider(width: 0),
-                      Expanded(child: ChatSetting())
+                      AnimatedContainer(
+                          duration: Duration(milliseconds: 200),
+                          width: value.isExpanded ? width(context) : 0,
+                          child: ChatSetting())
 
 /*
                       Visibility(

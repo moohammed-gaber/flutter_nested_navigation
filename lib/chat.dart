@@ -36,7 +36,7 @@ class Chat extends StatelessWidget {
       appBar: AppBar(
           title: GestureDetector(
               onTap: () {
-                wideModeChatSettingNavigation.key.currentState!.pushNamed(Profile.route);
+                navigationFactory.chatSettingNavigation.toProfile();
               },
               /*onTap: controller.toggleExpand,*/ child:
                   Text('Mohamed Gaber'))),

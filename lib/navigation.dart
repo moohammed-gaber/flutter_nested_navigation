@@ -43,7 +43,6 @@ abstract class Navigation {
 }
 
 abstract class IChatNavigation {
-  @override
   Future<T?> toChat<T extends Object?>();
 }
 
@@ -66,6 +65,7 @@ class WideModeChatNavigation extends Navigation implements IChatNavigation {
 
   @override
   Future<T?> toChat<T extends Object?>() {
+    print('heloooooo');
     return key.currentState!
         .pushNamed(Chat.route, arguments: RoomEntity(name: 'Helelo'));
   }
@@ -80,7 +80,7 @@ class NormalModeChatNavigation implements IChatNavigation {
 }
 
 abstract class NavigationAbstractFactory {
-  IChatSettingNavigation get endBarNavigation;
+  IChatSettingNavigation get chatSettingNavigation;
   IChatNavigation get chatNavigation;
 }
 
@@ -96,35 +96,39 @@ class NavigationFactoryProducer {
   }
 }
 
-class WideModeNavigationFactory implements NavigationAbstractFactory {
+class WideModeNavigationAbstractFactory implements NavigationAbstractFactory {
   @override
   IChatNavigation get chatNavigation {
     return wideModeChatNavigation;
   }
 
   @override
-  IChatSettingNavigation get endBarNavigation {
+  IChatSettingNavigation get chatSettingNavigation {
     return wideModeChatSettingNavigation;
   }
 }
 
-class NormalModeNavigationFactory implements NavigationAbstractFactory {
+class NormalModeNavigationAbstractFactory implements NavigationAbstractFactory {
   @override
   IChatNavigation get chatNavigation {
     return normalModeChatNavigation;
   }
 
   @override
-  IChatSettingNavigation  get endBarNavigation {
+  IChatSettingNavigation get chatSettingNavigation {
     return normaModeChatSettingNavigation;
   }
 }
 
 abstract class IChatSettingNavigation {
   Future<T?> toMedia<T extends Object?>();
+  Future<T?> toProfile<T extends Object?>();
+  void pop<T extends Object?>([T? result]);
+  Widget get popButton;
 }
 
-class WideModeChatSettingNavigation extends Navigation implements IChatSettingNavigation {
+class WideModeChatSettingNavigation extends Navigation
+    implements IChatSettingNavigation {
   final key = GlobalKey<NavigatorState>();
 
   @override
@@ -146,11 +150,39 @@ class WideModeChatSettingNavigation extends Navigation implements IChatSettingNa
   Future<T?> toMedia<T extends Object?>() {
     return key.currentState!.pushNamed(Media.route);
   }
+
+  @override
+  Future<T?> toProfile<T extends Object?>() {
+    controller.expand();
+    return key.currentState!.pushNamed(Profile.route);
+  }
+
+  @override
+  void pop<T extends Object?>([T? result]) {
+    controller.collapse();
+  }
+
+  @override
+  Widget get popButton => IconButton(onPressed: pop, icon: Icon(Icons.cancel));
 }
 
 class NormaModeChatSettingNavigation implements IChatSettingNavigation {
   @override
   Future<T?> toMedia<T extends Object?>() {
     return materialNavigationKey.currentState!.context.to(Media());
+  }
+
+  @override
+  Widget get popButton =>
+      IconButton(onPressed: pop, icon: Icon(Icons.arrow_back_ios_new));
+
+  @override
+  Future<T?> toProfile<T extends Object?>() {
+    return materialNavigationKey.currentState!.context.to(Profile());
+  }
+
+  @override
+  void pop<T extends Object?>([T? result]) {
+    return materialNavigationKey.currentState!.pop();
   }
 }

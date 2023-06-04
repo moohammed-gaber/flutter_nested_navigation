@@ -15,18 +15,11 @@ class Profile extends StatelessWidget {
         title: Text(
           'Media',
         ),
-        onTap: () {
-          navigationFactory.endBarNavigation.toMedia();
-        },
+        onTap: navigationFactory.chatSettingNavigation.toMedia,
       ),
       appBar: AppBar(
           title: Text('Contact Info'),
-          leading: IconButton(
-              onPressed: () {
-                wideModeChatSettingNavigation.key.currentState!.pop();
-                // controller.toggleExpand();
-              },
-              icon: Icon(Icons.cancel))),
+          leading: navigationFactory.chatSettingNavigation.popButton),
     );
   }
 }
@@ -38,7 +31,10 @@ class IdleChatSetting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(width: 0,height: 0,);
+    return SizedBox(
+      width: 0,
+      height: 0,
+    );
   }
 }
 
