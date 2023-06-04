@@ -34,7 +34,7 @@ class RoomTile extends StatelessWidget {
           maxLines: 1, overflow: TextOverflow.ellipsis),
       subtitle: const Text('Simple message',
           maxLines: 1, overflow: TextOverflow.ellipsis),
-      onTap: () => navigationFactory.chatNavigation.toChat(),
+      onTap: navigationFactory.chatNavigation.toChat,
     );
   }
 }
