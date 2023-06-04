@@ -7,16 +7,12 @@ class Responsive {
     return context.width > 1300;
   }
 
-  bool get isMobile => /*kDebugMode
-      ? true
-      :*/
+  bool get isMobile =>
       defaultTargetPlatform == TargetPlatform.iOS ||
       defaultTargetPlatform == TargetPlatform.android;
 
   bool get isWebMode => kIsWeb && !isMobile;
 }
-
-class ResponsiveMocking {}
 
 extension BuildContextExtenstions on BuildContext {
   double get width => MediaQuery.of(this).size.width;
