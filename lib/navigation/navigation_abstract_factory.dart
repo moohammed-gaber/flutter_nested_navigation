@@ -14,7 +14,7 @@ class NavigationFactoryProducer {
   NavigationFactoryProducer(this._responsive);
 
   NavigationAbstractFactory getFactory() {
-    return _responsive.isWideMode
+    return _responsive.isWebMode
         ? wideModeNavigationFactory
         : normalModeNavigationFactory;
   }

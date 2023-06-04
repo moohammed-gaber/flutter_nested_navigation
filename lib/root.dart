@@ -30,7 +30,7 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
     return ValueListenableBuilder(
       valueListenable: controller,
       builder: (context, value, child) => Scaffold(
-        body: responsive.isWideMode
+        body: responsive.isWebMode
             ? Column(
                 children: [
                   Text(
