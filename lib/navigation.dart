@@ -7,13 +7,13 @@ import 'package:nested_navigation/end_bar.dart';
 import 'package:nested_navigation/entities.dart';
 import 'package:nested_navigation/injection.dart';
 import 'package:nested_navigation/main.dart';
+import 'package:nested_navigation/responsive.dart';
 
 enum TransitionType { slide, noAnimation }
 
-class Navigation {
-  final chatKey = GlobalKey<NavigatorState>();
-  final endBarKey = GlobalKey<NavigatorState>();
+final materialNavigationKey = GlobalKey<NavigatorState>();
 
+abstract class Navigation {
   Route createAnimatedRoute(Widget page,
       {TransitionType transitionType = TransitionType.noAnimation}) {
     return PageRouteBuilder(
@@ -39,27 +39,118 @@ class Navigation {
     );
   }
 
-  Route<dynamic>? onGenerateChatRoute(RouteSettings settings) {
+  Route<dynamic>? onGenerateRoute(RouteSettings settings);
+}
+
+abstract class IChatNavigation {
+  @override
+  Future<T?> toChat<T extends Object?>();
+}
+
+class WideModeChatNavigation extends Navigation implements IChatNavigation {
+  final key = GlobalKey<NavigatorState>();
+
+  @override
+  Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Chat.route:
-        return navigation.createAnimatedRoute(Chat(
+        return createAnimatedRoute(Chat(
           room: settings.arguments as RoomEntity,
         ));
       case IdleChat.route:
-        return navigation.createAnimatedRoute(IdleChat());
+        return createAnimatedRoute(IdleChat());
       default:
     }
+    return null;
   }
-  Route<dynamic>? onGenerateEndBarRoute(RouteSettings settings) {
+
+  @override
+  Future<T?> toChat<T extends Object?>() {
+    return key.currentState!
+        .pushNamed(Chat.route, arguments: RoomEntity(name: 'Helelo'));
+  }
+}
+
+class NormalModeChatNavigation implements IChatNavigation {
+  @override
+  Future<T?> toChat<T extends Object?>() {
+    return materialNavigationKey.currentState!.context
+        .to(Chat(room: RoomEntity(name: 'Helelo')));
+  }
+}
+
+abstract class NavigationAbstractFactory {
+  IChatSettingNavigation get endBarNavigation;
+  IChatNavigation get chatNavigation;
+}
+
+class NavigationFactoryProducer {
+  final Responsive _responsive;
+
+  NavigationFactoryProducer(this._responsive);
+
+  NavigationAbstractFactory getFactory() {
+    return _responsive.isWebMode
+        ? wideModeNavigationFactory
+        : normalModeNavigationFactory;
+  }
+}
+
+class WideModeNavigationFactory implements NavigationAbstractFactory {
+  @override
+  IChatNavigation get chatNavigation {
+    return wideModeChatNavigation;
+  }
+
+  @override
+  IChatSettingNavigation get endBarNavigation {
+    return wideModeChatSettingNavigation;
+  }
+}
+
+class NormalModeNavigationFactory implements NavigationAbstractFactory {
+  @override
+  IChatNavigation get chatNavigation {
+    return normalModeChatNavigation;
+  }
+
+  @override
+  IChatSettingNavigation  get endBarNavigation {
+    return normaModeChatSettingNavigation;
+  }
+}
+
+abstract class IChatSettingNavigation {
+  Future<T?> toMedia<T extends Object?>();
+}
+
+class WideModeChatSettingNavigation extends Navigation implements IChatSettingNavigation {
+  final key = GlobalKey<NavigatorState>();
+
+  @override
+  Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Profile.route:
-        return navigation.createAnimatedRoute(Profile());
-      case IdleEndBar.route:
-        return navigation.createAnimatedRoute(IdleEndBar());
+        return createAnimatedRoute(Profile());
+      case IdleChatSetting.route:
+        return createAnimatedRoute(IdleChatSetting());
       case Media.route:
-        return navigation.createAnimatedRoute(Media());
+        return createAnimatedRoute(Media());
 
       default:
     }
+    return null;
+  }
+
+  @override
+  Future<T?> toMedia<T extends Object?>() {
+    return key.currentState!.pushNamed(Media.route);
+  }
+}
+
+class NormaModeChatSettingNavigation implements IChatSettingNavigation {
+  @override
+  Future<T?> toMedia<T extends Object?>() {
+    return materialNavigationKey.currentState!.context.to(Media());
   }
 }

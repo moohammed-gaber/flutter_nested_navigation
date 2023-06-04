@@ -21,4 +21,6 @@ class ResponsiveMocking {}
 extension BuildContextExtenstions on BuildContext {
   double get width => MediaQuery.of(this).size.width;
   double get height => MediaQuery.of(this).size.height;
+  Future<T?> to<T extends Object?>(Widget page) =>
+      Navigator.push(this, MaterialPageRoute(builder: (_) => page));
 }

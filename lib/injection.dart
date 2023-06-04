@@ -4,5 +4,22 @@ import 'package:nested_navigation/responsive.dart';
 
 final responsive = Responsive();
 final responsiveMocking = ResponsiveMocking();
-final Navigation navigation = Navigation();
 final controller = AppController();
+final normalModeChatNavigation = NormalModeChatNavigation();
+final normaModeChatSettingNavigation = NormaModeChatSettingNavigation();
+final wideModeChatNavigation = WideModeChatNavigation();
+final wideModeChatSettingNavigation = WideModeChatSettingNavigation();
+final wideModeNavigationFactory = WideModeNavigationFactory();
+final normalModeNavigationFactory = NormalModeNavigationFactory();
+final navigationFactoryProducer = NavigationFactoryProducer(responsive);
+final navigationFactory = navigationFactoryProducer.getFactory();
+
+
+/*
+final navigationKeys = navigationKeysFactory.create();
+
+
+final wideModeNavigationKeys = WideModeNavigationKeys();
+final navigationKeysFactory = NavigationKeysFactory(responsive);
+final normalModeNavigationKeys = NormalModeNavigationKeys();
+*/

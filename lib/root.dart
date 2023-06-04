@@ -37,31 +37,42 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                         child: Rooms(),
                       ),
                       VerticalDivider(width: 0),
-                      Expanded(
-                        flex: 3,
-                        child: Stack(
-                          alignment: AlignmentDirectional.centerEnd,
-                          children: [
-                            Navigator(
-                              key: navigation.chatKey,
-                              onGenerateRoute: navigation.onGenerateChatRoute,
-                              initialRoute: IdleChat.route,
-                            ),
-                            Visibility(
-                              child: EndBar(),
-                              visible: !responsive.isThreeBarsMode(context),
-                            )
-                          ],
+                      Visibility(
+                        visible: false,
+                        child: Expanded(
+                          flex: 3,
+                          child: Stack(
+                            fit: StackFit.expand,
+                            alignment: AlignmentDirectional.centerEnd,
+                            children: [
+                              Navigator(
+                                key: wideModeChatNavigation.key,
+                                onGenerateRoute:
+                                    wideModeChatNavigation.onGenerateRoute,
+                                initialRoute: IdleChat.route,
+                              ),
+                              /*
+                              Visibility(
+                                child: ChatSetting(),
+                                visible: !responsive.isThreeBarsMode(context),
+                              )
+
+                               */
+                            ],
+                          ),
                         ),
                       ),
                       VerticalDivider(width: 0),
+                      Expanded(child: ChatSetting())
 
+/*
                       Visibility(
-                        child: EndBar(),
+                        child: ChatSetting(),
                         visible: responsive.isThreeBarsMode(context),
                       )
+*/
 
-                      // EndBar()
+                      // ChatSetting()
                     ]),
                   ),
                 ],

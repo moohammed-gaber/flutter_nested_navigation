@@ -5,6 +5,7 @@ import 'package:nested_navigation/controller.dart';
 import 'package:nested_navigation/end_bar.dart';
 import 'package:nested_navigation/entities.dart';
 import 'package:nested_navigation/injection.dart';
+import 'package:nested_navigation/navigation.dart';
 import 'package:nested_navigation/root.dart';
 
 void main() {
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: materialNavigationKey,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,

@@ -35,7 +35,11 @@ class Chat extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: GestureDetector(
-              onTap: controller.toggleExpand, child: Text('Mohamed Gaber'))),
+              onTap: () {
+                wideModeChatSettingNavigation.key.currentState!.pushNamed(Profile.route);
+              },
+              /*onTap: controller.toggleExpand,*/ child:
+                  Text('Mohamed Gaber'))),
       backgroundColor: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
           .withOpacity(1.0),
       body: Center(child: Text(room.name)),

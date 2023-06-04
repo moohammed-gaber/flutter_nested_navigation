@@ -16,44 +16,50 @@ class Profile extends StatelessWidget {
           'Media',
         ),
         onTap: () {
-          navigation.endBarKey.currentState!.pushNamed(Media.route);
+          navigationFactory.endBarNavigation.toMedia();
         },
       ),
       appBar: AppBar(
           title: Text('Contact Info'),
           leading: IconButton(
               onPressed: () {
-                controller.toggleExpand();
+                wideModeChatSettingNavigation.key.currentState!.pop();
+                // controller.toggleExpand();
               },
               icon: Icon(Icons.cancel))),
     );
   }
 }
 
-class IdleEndBar extends StatelessWidget {
+class IdleChatSetting extends StatelessWidget {
   static const route = '/idle-end-bar';
 
-  const IdleEndBar({Key? key}) : super(key: key);
+  const IdleChatSetting({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.shrink();
+    return SizedBox(width: 0,height: 0,);
   }
 }
 
-class EndBar extends StatelessWidget {
-  const EndBar({Key? key}) : super(key: key);
+class ChatSetting extends StatelessWidget {
+  const ChatSetting({Key? key}) : super(key: key);
   double width(BuildContext context) =>
       responsive.isThreeBarsMode(context) ? 500 : 2000;
   @override
   Widget build(BuildContext context) {
+    return Navigator(
+      key: wideModeChatSettingNavigation.key,
+      onGenerateRoute: wideModeChatSettingNavigation.onGenerateRoute,
+      initialRoute: IdleChatSetting.route,
+    );
     return ValueListenableBuilder(
         valueListenable: controller,
         builder: (context, value, child) => AnimatedContainer(
             width: value.isExpanded ? width(context) : 0,
             child: Navigator(
-              key: navigation.endBarKey,
-              onGenerateRoute: navigation.onGenerateEndBarRoute,
+              key: wideModeChatSettingNavigation.key,
+              onGenerateRoute: wideModeChatSettingNavigation.onGenerateRoute,
               initialRoute: Profile.route,
             ),
             color: Colors.green,
