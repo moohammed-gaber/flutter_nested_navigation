@@ -21,6 +21,7 @@ class Rooms extends StatelessWidget {
 class RoomTile extends StatelessWidget {
   const RoomTile({Key? key, required this.room}) : super(key: key);
   final RoomEntity room;
+
   final avatar = const CircleAvatar(
       backgroundImage: NetworkImage(
           'https://t3.ftcdn.net/jpg/02/00/90/24/360_F_200902415_G4eZ9Ok3Ypd4SZZKjc8nqJyFVp1eOD6V.jpg'));
@@ -29,9 +30,10 @@ class RoomTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: avatar,
-      title: const Text('Simple Room', maxLines: 1, overflow: TextOverflow.ellipsis),
-      subtitle:
-          const Text('Simple message', maxLines: 1, overflow: TextOverflow.ellipsis),
+      title: const Text('Simple Room',
+          maxLines: 1, overflow: TextOverflow.ellipsis),
+      subtitle: const Text('Simple message',
+          maxLines: 1, overflow: TextOverflow.ellipsis),
       onTap: () => navigationFactory.chatNavigation.toChat(),
     );
   }

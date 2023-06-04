@@ -14,7 +14,15 @@ class NestedNavigationPage extends StatefulWidget {
 }
 
 class _NestedNavigationPageState extends State<NestedNavigationPage> {
-  double width(BuildContext context) => context.width / 3;
+  double width(BuildContext context) {
+    if(context.width<570){
+      return context.width-(context.width * 0.2);
+    }
+    else{
+      return context.width / 4;
+
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
