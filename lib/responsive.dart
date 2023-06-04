@@ -2,10 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Responsive {
-  bool isThreeBarsMode(BuildContext context) {
-    return context.width > 1300;
-  }
-
   bool get isMobile =>
       defaultTargetPlatform == TargetPlatform.iOS ||
       defaultTargetPlatform == TargetPlatform.android;
