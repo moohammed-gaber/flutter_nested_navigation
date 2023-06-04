@@ -6,7 +6,6 @@ import 'package:nested_navigation/navigation/navigation_abstract_factory.dart';
 import 'package:nested_navigation/responsive.dart';
 
 final responsive = Responsive();
-final responsiveMocking = ResponsiveMocking();
 final controller = AppController();
 final normalModeChatNavigation = NormalModeChatNavigation();
 final normaModeChatSettingNavigation = NormaModeChatSettingNavigation();
@@ -16,5 +15,3 @@ final wideModeNavigationFactory = WideModeNavigationAbstractFactory();
 final normalModeNavigationFactory = NormalModeNavigationAbstractFactory();
 final navigationFactoryProducer = NavigationFactoryProducer(responsive);
 final navigationFactory = navigationFactoryProducer.getFactory();
-
-
