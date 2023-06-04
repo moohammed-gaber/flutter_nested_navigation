@@ -39,8 +39,6 @@ class IdleChatSetting extends StatelessWidget {
 
 class ChatSetting extends StatelessWidget {
   const ChatSetting({Key? key}) : super(key: key);
-  double width(BuildContext context) =>
-      responsive.isThreeBarsMode(context) ? 500 : 2000;
   @override
   Widget build(BuildContext context) {
     return Navigator(
@@ -48,17 +46,6 @@ class ChatSetting extends StatelessWidget {
       onGenerateRoute: wideModeChatSettingNavigation.onGenerateRoute,
       initialRoute: IdleChatSetting.route,
     );
-    return ValueListenableBuilder(
-        valueListenable: controller,
-        builder: (context, value, child) => AnimatedContainer(
-            width: value.isExpanded ? width(context) : 0,
-            color: Colors.green,
-            duration: const Duration(milliseconds: 200),
-            child: Navigator(
-              key: wideModeChatSettingNavigation.key,
-              onGenerateRoute: wideModeChatSettingNavigation.onGenerateRoute,
-              initialRoute: Profile.route,
-            )));
   }
 }
 
