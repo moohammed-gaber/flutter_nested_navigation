@@ -1,5 +1,8 @@
 import 'package:nested_navigation/controller.dart';
 import 'package:nested_navigation/navigation.dart';
+import 'package:nested_navigation/navigation/chat_navigation.dart';
+import 'package:nested_navigation/navigation/chat_setting_navigation.dart';
+import 'package:nested_navigation/navigation/navigation_abstract_factory.dart';
 import 'package:nested_navigation/responsive.dart';
 
 final responsive = Responsive();
@@ -15,11 +18,3 @@ final navigationFactoryProducer = NavigationFactoryProducer(responsive);
 final navigationFactory = navigationFactoryProducer.getFactory();
 
 
-/*
-final navigationKeys = navigationKeysFactory.create();
-
-
-final wideModeNavigationKeys = WideModeNavigationKeys();
-final navigationKeysFactory = NavigationKeysFactory(responsive);
-final normalModeNavigationKeys = NormalModeNavigationKeys();
-*/
