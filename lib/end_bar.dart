@@ -11,7 +11,7 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListTile(
-        leading: Icon(Icons.attachment, size: 20),
+        // leading: Icon(Icons.attachment, size: 20),
         title: Text(
           'Media',
         ),

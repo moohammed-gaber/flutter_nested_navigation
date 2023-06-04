@@ -35,25 +35,27 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                   ),
                   Expanded(
                     child: Row(children: [
-                      Expanded(
+                      SizedBox(
                         child: Rooms(),
-                        // width: 300,
+                        width: context.width * 0.2,
                       ),
                       VerticalDivider(width: 0),
-
+                      Expanded(
+                        flex: 3,
+                        child: Navigator(
+                          key: wideModeChatNavigation.key,
+                          onGenerateRoute:
+                              wideModeChatNavigation.onGenerateRoute,
+                          initialRoute: IdleChat.route,
+                        ),
+                      ),
+/*
                       Visibility(
                           // maintainState: true,
                           visible: context.width < 900 && value.isExpanded,
-                          replacement: Expanded(
-                            flex: 3,
-                            child: Navigator(
-                              key: wideModeChatNavigation.key,
-                              onGenerateRoute:
-                                  wideModeChatNavigation.onGenerateRoute,
-                              initialRoute: IdleChat.route,
-                            ),
-                          ),
+                          replacement:
                           child: SizedBox()),
+*/
 
 /*
                       Expanded(
@@ -100,7 +102,7 @@ class _NestedNavigationPageState extends State<NestedNavigationPage> {
                       VerticalDivider(width: 0),
                       AnimatedContainer(
                           duration: Duration(milliseconds: 200),
-                          width: value.isExpanded ? width(context) : 0,
+                          width: value.isExpanded ? context.width / 3 : 0,
                           child: ChatSetting())
 
 /*
